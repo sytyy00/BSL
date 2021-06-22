@@ -17,9 +17,6 @@ class Settings(BaseSettings):
     REDIS_HOST: str
     REDIS_URL: Optional[str] = None
 
-    class Config:
-        env_file = "/home/sytyy00/up_project/bsl/.env"
-
     @validator("SQLALCHEMY_DATABASE_URI", pre=True)
     def assemble_db_connection(cls, v: Optional[str], values: Dict[str, Any]) -> Any:
         if isinstance(v, str):
@@ -43,4 +40,4 @@ class Settings(BaseSettings):
         case_sensitive = True
 
 
-settings = Settings(_env_file='/home/sytyy00/up_project/bsl/.env')
+settings = Settings()
